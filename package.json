@@ -7,16 +7,6 @@
     "test": "jest",
     "dev": "nodemon ./src/app.js"
   },
-  "jest": {
-    "testEnvironment": "node",
-    "testMatch": [
-      "**/test/**/*.test.ts"
-    ],
-    "preset": "ts-jest",
-    "setupFilesAfterEnv": [
-      "./jest.setup.ts"
-    ]
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
