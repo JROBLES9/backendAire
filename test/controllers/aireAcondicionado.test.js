@@ -57,24 +57,30 @@ describe('aireAcondicionadoController', () => {
             expect(res.json).toHaveBeenCalledWith(mockResponse);
         });
 
-        // it('Retorna un mensaje de error si falla', async () => {
-        //     const mockError = new Error('Error al crear la alerta');
-        //     (AlertaModel.create).mockRejectedValue(mockError);
+        it('Retorna un mensaje de error si falla', async () => {
+            const mockError = new Error('Error al crear el aire acondicionado');
+            (aireAcondicionadoModel.create).mockRejectedValue(mockError);
 
-        //     const req = {
-        //         body: { id_proyectos: 1, state: true }
-        //     };
+            const req = {
+                body: { descripcion: "NO hace frio inge",
+                    modelo: "modelo",
+                    marca: "marca",
+                    nombre: "nombre",
+                    cantidadTemperaturas: 1,
+                    frecuencia: 2,
+                    potencia: 3 }
+            };
 
-        //     const res = {
-        //         status: jest.fn().mockReturnThis(),
-        //         json: jest.fn()
-        //     };
+            const res = {
+                status: jest.fn().mockReturnThis(),
+                json: jest.fn()
+            };
 
-        //     await AlertaController.createAlerta(req, res);
+            await aireAcondicionadoController.createAire(req, res);
 
-        //     expect(res.status).toHaveBeenCalledWith(500);
-        //     expect(res.json).toHaveBeenCalledWith({ message: "Error al crear la alerta.", error: mockError.message });
-        // });
+            expect(res.status).toHaveBeenCalledWith(500);
+            expect(res.json).toHaveBeenCalledWith({ message: "Error al crear el aire acondicionado", error: mockError.message });
+        });
     
     });
 });
