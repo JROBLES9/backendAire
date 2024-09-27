@@ -43,7 +43,7 @@ const aireAcondicionadoController = {
                 idAireAcondicionado: idAireAcondicionado 
             });
 
-            res.status(201).json(aireAcondicionado);
+            res.status(201).json({id:aireAcondicionado.idAireAcondicionado, message:"Aire acondicionado creado exitosamente"}  );
         } catch (error) {
             res.status(500).json({ message: error.message });
         }
