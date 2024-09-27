@@ -10,9 +10,11 @@ const aireAcondicionadoController = {
         }
     },
 
-    getAire: async (_req, res) => {
+    getAire: async (req, res) => {
+        const idAireAcondicionado =  req.params.id;
+        
         try {
-            const aireAcondicionado = await aireAcondicionadoModel.findOne();
+            const aireAcondicionado = await aireAcondicionadoModel.findByPk(idAireAcondicionado);
             res.status(200).json(aireAcondicionado);
         } catch (error) {
             res.status(500).json({ message: error.message });
